@@ -1,0 +1,108 @@
+﻿@model Blog_sites.Models.Blog
+
+@{
+    ViewBag.Title = "Create";
+
+}
+
+<h2>Blog Ekle</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Blog</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Baslik, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Baslik, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Baslik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aciklama, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control" })
+                @*Birden fazla satır bılgı almak ıcın textareafor kullanılır*@
+                @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Resim, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Icerik, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Icerik, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Icerik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.EklenmeTarihi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EklenmeTarihi, new { @class = "form-control" } )
+                    @Html.ValidationMessageFor(model => model.EklenmeTarihi, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @*veri tabanından otomatık alındıgı ıcın gerek yok*@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.onay,new{ @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.onay)
+                        @Html.ValidationMessageFor(model => model.onay, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.anasayfa,  new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.anasayfa)
+                        @Html.ValidationMessageFor(model => model.anasayfa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+
+        @*detay alanındankotrol etmek ıcın bunları kaldırdık*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "Kategori Adı", new { @class = "control-label col-md-2" })
+            @*ilk tırnak category yerınde yazacak metnı ıfade eder*@
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", null, "Kategori Seçiniz", new { @class = "form-control" })
+                @*CategoryId vıewbagden gelmektedır controller sayfasından*@
+                @*nulldan sonra gelen kategorı secınız ıse dropdownun default degerını ıfade etmektedır*@
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

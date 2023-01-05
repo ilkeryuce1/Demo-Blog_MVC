@@ -1,0 +1,45 @@
+﻿@model Blog_sites.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Kategori Ekle</h2>
+
+@*BEGINFORM METODU CREATEYE DİREK GONDERIR FORMU*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()  @*FORM OLUSUNCA FORMUZERINDE BIR TOKEN KULLANILIR*@
+
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.KategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                @*FORMU POST ETTIGIMIZDE YANI BU CREATEYE BASINCA HTTP POST METODU DEVREYE GİRER*@
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Dön", "Index", null, new {@class="btn btn-primarys"})
+        {
+
+        }
+    })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

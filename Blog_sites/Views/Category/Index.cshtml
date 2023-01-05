@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Blog_sites.Models.CategoryModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>KAtegori Ekle</h2>
+<hr />
+<p>
+    @Html.ActionLink("Katergori Ekle", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+
+@*EKLEME*@
+@*DEISIM YAPILAN ALAN INDEX EKRANINDA GOSTERILDI*@
+@if (TempData["Kategori"] != null)//Tempdatanın ıcınde bır verı oldugunda asagıdakı satur calsııcak 
+{
+    var kategori = (Blog_sites.Models.Category)TempData["Kategori"];
+
+    <div class="alert alert-success">
+        <span class="glyphicon glyphicon-ok"><strong>@kategori.KategoriAdi</strong> Kayıt edildi </span>
+    </div>
+}
+
+
+<table class="table table-bordered table-hover table-striped col-sm-12">
+    <thead class="thead-dark" scope="col">
+        <tr>
+            <th scope="col" style="width:70%;">
+                @Html.DisplayNameFor(model => model.KategoriAdi)
+            </th>
+            <th scope="col" style="width:16%;">
+                @Html.DisplayNameFor(model => model.BlogSayisi)
+
+            </th>
+            <th style="width:12%;"></th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.KategoriAdi
+                @*//alttakının kısa halı*@
+                @*@Html.DisplayFor(modelItem => item.KategoriAdi)*@
+            </td>
+
+            <th scope="row">
+                @item.BlogSayisi
+            </th>
+
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm " })
+                @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>

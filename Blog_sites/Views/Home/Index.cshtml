@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<Blog_sites.Models.BlogModel>
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+<h2>Blog Listesi</h2>
+@Html.Partial("BlogListesi", Model)
+
+@section sagkolon{
+    <!--<div class="well">
+        <h4>Blogda Ara</h4>
+        <div class="input-group">
+            <input type="text" name="name" value="" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>-->
+    @*inp grup*@
+    <!--</div>-->
+    @Html.Partial("Search")
+
+
+
+    @{ Html.RenderAction("KategoriListesi", "Category");}
+
+}
+
+
+
+-

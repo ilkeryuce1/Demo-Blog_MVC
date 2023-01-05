@@ -1,0 +1,18 @@
+﻿@using (Html.BeginForm("List","Blog",FormMethod.Get))
+    //girilen deger tarayıcının urlsınde gormek ıcın get yaptık
+    {
+    <div class="well">
+        <h4>Blogda Ara</h4>
+        <div class="input-group">
+                @Html.TextBox("q", null, new {@class="form-control"})
+            @*Anahtar kelıme var ıse arama yapar ve doldurur*@
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+      
+    </div>
+}
+

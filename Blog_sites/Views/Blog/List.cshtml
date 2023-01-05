@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<Blog_sites.Models.BlogModel>
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+<h2>Blog Listesi</h2>
+
+@Html.Partial("BlogListesi",Model)
+@*partialı boylece ıkı sayfada da kullandık*@
+
+@section sagkolon{
+   @Html.Partial("Search")
+    @{ Html.RenderAction("KategoriListesi", "Category");}
+
+}
+
+
+
+
